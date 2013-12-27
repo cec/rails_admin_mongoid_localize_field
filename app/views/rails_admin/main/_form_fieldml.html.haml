@@ -2,7 +2,7 @@
   = form.localized_fields do |localized_fields|
     %li{ class: ( 'active' if localized_fields.language == I18n.locale ) }
       %a{ href: "##{localized_fields.language}_#{field.method_name}", data: { toggle: "tab" } }= localized_fields.language
-.tab-content
+.tab-content{ :style => 'float:left' }
   = form.localized_fields do |localized_fields|
     .fields.tab-pane{ id: "#{localized_fields.language}_#{field.method_name}", class: ( 'active' if localized_fields.language == I18n.locale ) }
       = localized_fields.text_field field.method_name, field.html_attributes.reverse_merge({ :value => field.form_value, :checked => field.form_value.in?([true, '1'])})
