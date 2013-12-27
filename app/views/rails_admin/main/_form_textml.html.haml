@@ -2,34 +2,37 @@
   if field.ckeditor
     richtext = 'ckeditor'
     js_data = {
-      :jspath => field.ckeditor_location ? field.ckeditor_location : field.ckeditor_base_location + "ckeditor.js",
-      :base_location => field.ckeditor_base_location,
+      :jspath => field.location ? field.location : field.base_location + "ckeditor.js",
+      :base_location => field.base_location,
       :options => {
-        :customConfig => field.ckeditor_config_js ? field.ckeditor_config_js : field.ckeditor_base_location + "config.js"
+        :customConfig => field.config_js ? field.config_js : field.base_location + "config.js"
       }
     }
   elsif field.codemirror
     richtext = 'codemirror'
     js_data = {
-      :csspath => field.codemirror_css_location,
-      :jspath => field.codemirror_js_location,
-      :options => field.codemirror_config,
-      :locations => field.codemirror_assets
+      :csspath => field.css_location,
+      :jspath => field.js_location,
+      :options => field.config,
+      :locations => field.assets
     }
   elsif field.bootstrap_wysihtml5
     richtext = 'bootstrap-wysihtml5'
     js_data = {
-      :csspath => field.bootstrap_wysihtml5_css_location,
-      :jspath => field.bootstrap_wysihtml5_js_location,
-      :config_options => field.bootstrap_wysihtml5_config_options.to_json
+      :csspath => field.css_location,
+      :jspath => field.js_location,
+      :config_options => field.config_options.to_json
     }
   else
     richtext = false
     js_data = {}
   end
 
-
-
-= form.localized_fields do |localized_fields|
-  = localized_fields.label localized_fields.language
-  = localized_fields.text_area field.method_name, field.html_attributes.reverse_merge(:data => { :richtext => richtext, :options => js_data.to_json }).reverse_merge((hdv = field.html_default_value).nil? ? { :value => field.formatted_value } : { :value => hdv })
+%ul.nav.nav-tabs
+  = form.localized_fields do |localized_fields|
+    %li{ class: ( 'active' if localized_fields.language == I18n.locale ) }
+      %a{ href: "##{localized_fields.language}_#{field.method_name}", data: { toggle: "tab" } }= localized_fields.language
+.tab-content{ :style => 'float:left' }
+  = form.localized_fields do |localized_fields|
+    .fields.tab-pane{ id: "#{localized_fields.language}_#{field.method_name}", class: ( 'active' if localized_fields.language == I18n.locale ) }
+      = localized_fields.text_area field.method_name, field.html_attributes.reverse_merge(:data => { :richtext => richtext, :options => js_data.to_json }).reverse_merge({ :value => field.form_value })
