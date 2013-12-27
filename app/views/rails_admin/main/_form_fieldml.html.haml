@@ -1,6 +1,6 @@
-%ul.nav.nav-tabs{ :style => 'margin-top:5px' }
+%ul.nav.nav-tabs
   = form.localized_fields do |localized_fields|
-    %li{ class: ( 'active' if localized_fields.language.to_s == I18n.locale ) }
+    %li{ class: ( 'active' if localized_fields.language == I18n.locale ) }
       %a{ href: "##{localized_fields.language}_#{field.method_name}", data: { toggle: "tab" } }= localized_fields.language
 .tab-content
   = form.localized_fields do |localized_fields|
