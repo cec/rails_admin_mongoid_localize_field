@@ -12,7 +12,6 @@ module RegisterInstances
   extend ActiveSupport::Concern
 
   included do
-    RailsAdmin::Config::Fields::Types::register(self)
 
     register_instance_option :translations_field do
       name.to_s + '_translations'
