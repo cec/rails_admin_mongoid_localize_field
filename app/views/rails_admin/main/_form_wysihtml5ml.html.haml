@@ -5,4 +5,4 @@
     :config_options => field.config_options.to_json
   }
 
-= render 'tabbed_form', form: form, field: field, richtext: 'bootstrap-wysihtml5', js_data: js_data
+= render 'form', form: form, field: field, richtext: 'bootstrap-wysihtml5', js_data: js_data, attributes: field.html_attributes.reverse_merge(:data => { :richtext => richtext, :options => js_data.to_json }).reverse_merge({ :value => field.form_value })

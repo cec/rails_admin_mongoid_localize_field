@@ -1,7 +1,7 @@
 require "rails_admin_mongo_loc/engine"
 require 'active_support/concern'
 
-module RegisterType
+module ConfigureBasicType
   extend ActiveSupport::Concern
 
   included do
@@ -9,6 +9,10 @@ module RegisterType
 
     register_instance_option :allowed_methods do
       [method_name, name.to_s + '_translations']
+    end
+
+    register_instance_option :tabbed do
+      true
     end
 
   end
@@ -26,7 +30,7 @@ module RailsAdmin
       module Types
 
         class Textml < RailsAdmin::Config::Fields::Types::Text
-          include RegisterType
+          include ConfigureBasicType
 
           register_instance_option :partial do
             :form_textml
@@ -35,7 +39,7 @@ module RailsAdmin
         end
 
         class CodeMirrorml < RailsAdmin::Config::Fields::Types::CodeMirror
-          include RegisterType
+          include ConfigureBasicType
 
           register_instance_option :partial do
             :form_code_mirrorml
@@ -44,7 +48,7 @@ module RailsAdmin
         end
 
         class Wysihtml5ml < RailsAdmin::Config::Fields::Types::Wysihtml5
-          include RegisterType
+          include ConfigureBasicType
 
           register_instance_option :partial do
             :form_wysihtml5ml
@@ -53,7 +57,7 @@ module RailsAdmin
         end
 
         class CKEditorml < RailsAdmin::Config::Fields::Types::CKEditor
-          include RegisterType
+          include ConfigureBasicType
 
           register_instance_option :partial do
             :form_ck_editorml
@@ -62,7 +66,7 @@ module RailsAdmin
         end
 
         class Stringml < RailsAdmin::Config::Fields::Types::String
-          include RegisterType
+          include ConfigureBasicType
 
           register_instance_option :partial do
             :form_fieldml

@@ -1,0 +1,6 @@
+- if field.tabbed
+  = render 'form_tabbed', form: form, field: field, richtext: 'ckeditor', js_data: js_data, attributes: attributes
+- else
+  = form.localized_fields do |localized_fields|
+    = localized_fields.label localized_fields.language
+    = localized_fields.text_area field.method_name, attributes
