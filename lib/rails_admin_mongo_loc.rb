@@ -49,6 +49,7 @@ module RailsAdmin
           register_instance_option :partial do
             :form_fieldml
           end
+
         end
 
       end
@@ -58,19 +59,20 @@ end
 
 RailsAdmin::Config::Fields.register_factory do |parent, properties, fields|
 
-  if properties[:name] == :textml 
-    fields << RailsAdmin::Config::Fields::Types::Textml.new(parent, properties[:name], properties)
-    true
-  else
-    false
+  case properties[:name]
+    when :ckeditorml
+      fields << RailsAdmin::Config::Fields::Types::CKEditorml.new(parent, properties[:name], properties)
+      true
+    when :textml
+      fields << RailsAdmin::Config::Fields::Types::Textml.new(parent, properties[:name], properties)
+      true
+    when :stringml
+      ields << RailsAdmin::Config::Fields::Types::Stringml.new(parent, properties[:name], properties)
+      true
+    else
+      false
   end
 
-  if properties[:name] == :stringml
-    fields << RailsAdmin::Config::Fields::Types::Stringml.new(parent, properties[:name], properties)
-    true
-  else
-    false
-  end
 end
 
 
