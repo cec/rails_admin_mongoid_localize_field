@@ -1,4 +1,4 @@
-require "rails_admin_mongo_loc/engine"
+require "rails_admin_mongoid_localize_filed/engine"
 require 'active_support/concern'
 require 'rails_admin/config/fields'
 require 'rails_admin/config/fields/base'

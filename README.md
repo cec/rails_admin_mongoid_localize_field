@@ -1,13 +1,13 @@
-# RailsAdminMongoLoc
+# RailsAdminMongoidLocalizeField
 
-Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for [mongoid localized fields](http://mongoid.org/en/mongoid/docs/documents.html#localized_fields). Based on gem ["localized_fields"](https://github.com/tiagogodinho/localized_fields)
+Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for [mongoid localized fields](http://mongoid.org/en/mongoid/docs/documents.html#localized_fields).
 
 
 ## Installation
 
 In your `Gemfile`add the following dependencies:
 
-    gem 'rails_admin_mongo_loc', :require => 'rails_admin_mongo_loc', :git => 'git://github.com/infernalmaster/rails_admin_mongo_loc'
+    gem 'rails_admin_mongoid_localize_filed', :github => 'sudosu/rails_admin_mongoid_localize_filed'
 
 Run:
 

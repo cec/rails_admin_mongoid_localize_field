@@ -7,4 +7,4 @@
     }
   }
 
-= render 'form', form: form, field: field, field_type: :text_area, html_attributes: field.html_attributes.reverse_merge(:data => { :richtext => 'ckeditor', :options => js_data.to_json }).reverse_merge({ :value => field.form_value })
+= render 'form', form: form, field: field, field_type: :text_area, html_attributes: field.html_attributes.reverse_merge(:data => { :richtext => 'ckeditor', :options => js_data.to_json })
