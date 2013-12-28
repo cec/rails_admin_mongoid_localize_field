@@ -38,7 +38,7 @@ module RailsAdmin
           include RegisterType
 
           register_instance_option :partial do
-            :form_textml
+            :form_ck_editorml
           end
 
         end

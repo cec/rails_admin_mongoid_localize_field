@@ -1,0 +1,9 @@
+:ruby
+  js_data = {
+    :csspath => field.css_location,
+    :jspath => field.js_location,
+    :options => field.config,
+    :locations => field.assets
+  }
+
+= render 'tabbed_form', richtext: 'codemirror', js_data: js_data
