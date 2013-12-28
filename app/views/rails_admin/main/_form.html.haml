@@ -1,6 +1,6 @@
 - if field.tabbed
-  = render 'form_tabbed', form: form, field: field, attributes: attributes
+  = render 'form_tabbed', form: form, field: field, field_type: field_type, attributes: html_attributes
 - else
   = form.localized_fields do |localized_fields|
     = localized_fields.label localized_fields.language
-    = localized_fields.text_area field.method_name, attributes
+    = localized_fields.text_area field.method_name, html_attributes

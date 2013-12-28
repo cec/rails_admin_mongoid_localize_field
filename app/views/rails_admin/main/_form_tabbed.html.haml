@@ -5,4 +5,4 @@
 .tab-content{ :style => 'float:left' }
   = form.localized_fields do |localized_field|
     .fields.tab-pane{ id: "#{localized_field.language}_#{field.method_name}", class: ( 'active' if localized_field.language == I18n.locale ) }
-      = localized_field.text_area field.method_name, attributes
+      = localized_field.send field_type, field.method_name, html_attributes

@@ -1,2 +1,1 @@
-= render 'form', form: form, field: field, attributes: field.html_attributes.reverse_merge({ :value => field.form_value, :checked => field.form_value.in?([true, '1'])})
-
+= render 'form', form: form, field: field, field_type: :text_field, html_attributes: field.html_attributes.reverse_merge({ :value => field.form_value, :checked => field.form_value.in?([true, '1'])})
