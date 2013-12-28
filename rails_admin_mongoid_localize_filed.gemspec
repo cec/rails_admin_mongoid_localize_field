@@ -7,11 +7,12 @@ require "rails_admin_mongoid_localize_filed/version"
 Gem::Specification.new do |s|
   s.name        = "rails_admin_mongoid_localize_filed"
   s.version     = RailsAdminMongoidLocalizeField::VERSION
-  s.authors     = ["Rostyslav Diachok", "Oleg Popadiuk"]
-  s.email       = ["infernalmaster1@gmail.com", "superdodman@gmail.com"]
+  s.authors     = ["Oleg Popadiuk", "Rostyslav Diachok"]
+  s.email       = ["superdodman@gmail.com", "infernalmaster1@gmail.com"]
   s.homepage    = "https://github.com/sudosu/rails_admin_mongoid_localize_filed"
   s.summary     = "RailsAdmin support for mongoid localized fields."
   s.description = %q{Adds to RailsAdmin support for mongoid localized fields.}
+  s.license     = 'MIT'
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
@@ -19,7 +20,4 @@ Gem::Specification.new do |s|
   s.add_dependency "mongoid", '>= 3.0'
   s.add_dependency "rails_admin", '>= 0.5'
   s.add_dependency "haml"
-
-  s.add_development_dependency "bundler", "~> 1.3"
-  s.add_development_dependency "rake"
 end
