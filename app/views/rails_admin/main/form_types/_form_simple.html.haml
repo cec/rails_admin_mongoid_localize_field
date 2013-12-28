@@ -1,0 +1,3 @@
+= form.localized_fields do |localized_fields|
+  = localized_fields.label localized_fields.language
+  = localized_fields.send field_type field.method_name, html_attributes
