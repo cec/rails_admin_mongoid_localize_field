@@ -6,4 +6,4 @@
     :locations => field.assets
   }
 
-= render 'form_for_textareas', form: form, field: field, richtext: 'codemirror', js_data: js_data, attributes: field.html_attributes.reverse_merge(:data => { :richtext => richtext, :options => js_data.to_json }).reverse_merge({ :value => field.form_value })
+= render 'form_for_textareas', form: form, field: field, attributes: field.html_attributes.reverse_merge(:data => { :richtext => 'codemirror', :options => js_data.to_json }).reverse_merge({ :value => field.form_value })

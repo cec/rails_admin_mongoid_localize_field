@@ -1,1 +1,1 @@
-= render 'form_text', form: form, field: field, richtext: false, js_data: js_data
+= render 'form_text', form: form, field: field, attributes: field.html_attributes.reverse_merge(:data => { :richtext => false, :options => {}.to_json }).reverse_merge({ :value => field.form_value })
