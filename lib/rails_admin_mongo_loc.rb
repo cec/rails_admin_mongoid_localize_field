@@ -43,6 +43,15 @@ module RailsAdmin
 
         end
 
+        class Wysihtml5ml < RailsAdmin::Config::Fields::Types::Wysihtml5
+          include RegisterType
+
+          register_instance_option :partial do
+            :form_wysihtml5ml
+          end
+
+        end
+
         class CKEditorml < RailsAdmin::Config::Fields::Types::CKEditor
           include RegisterType
 
@@ -80,6 +89,9 @@ RailsAdmin::Config::Fields.register_factory do |parent, properties, fields|
       true
     when :code_mirrorml
       fields << RailsAdmin::Config::Fields::Types::CodeMirrorml.new(parent, properties[:name], properties)
+      true
+    when :wysihtml5ml
+      fields << RailsAdmin::Config::Fields::Types::Wysihtml5ml.new(parent, properties[:name], properties)
       true
     else
       false

@@ -7,4 +7,5 @@
     }
   }
 
-= render 'tabbed_form', richtext: 'ckeditor', js_data: js_data
+- if field.tabbed
+  = render 'tabbed_form', form: form, field: field, richtext: 'ckeditor', js_data: js_data
