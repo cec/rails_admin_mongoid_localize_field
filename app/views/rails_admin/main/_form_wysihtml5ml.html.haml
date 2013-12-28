@@ -1,0 +1,8 @@
+:ruby
+  js_data = {
+    :csspath => field.css_location,
+    :jspath => field.js_location,
+    :config_options => field.config_options.to_json
+  }
+
+= render 'tabbed_form', richtext: 'bootstrap-wysihtml5', js_data: js_data

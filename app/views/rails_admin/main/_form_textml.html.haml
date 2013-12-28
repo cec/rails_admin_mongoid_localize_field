@@ -1,33 +1,3 @@
-:ruby
-  if field.ckeditor
-    richtext = 'ckeditor'
-    js_data = {
-      :jspath => field.location ? field.location : field.base_location + "ckeditor.js",
-      :base_location => field.base_location,
-      :options => {
-        :customConfig => field.config_js ? field.config_js : field.base_location + "config.js"
-      }
-    }
-  elsif field.codemirror
-    richtext = 'codemirror'
-    js_data = {
-      :csspath => field.css_location,
-      :jspath => field.js_location,
-      :options => field.config,
-      :locations => field.assets
-    }
-  elsif field.bootstrap_wysihtml5
-    richtext = 'bootstrap-wysihtml5'
-    js_data = {
-      :csspath => field.css_location,
-      :jspath => field.js_location,
-      :config_options => field.config_options.to_json
-    }
-  else
-    richtext = false
-    js_data = {}
-  end
-
 %ul.nav.nav-tabs
   = form.localized_fields do |localized_fields|
     %li{ class: ( 'active' if localized_fields.language == I18n.locale ) }
@@ -35,4 +5,4 @@
 .tab-content{ :style => 'float:left' }
   = form.localized_fields do |localized_fields|
     .fields.tab-pane{ id: "#{localized_fields.language}_#{field.method_name}", class: ( 'active' if localized_fields.language == I18n.locale ) }
-      = localized_fields.text_area field.method_name, field.html_attributes.reverse_merge(:data => { :richtext => richtext, :options => js_data.to_json }).reverse_merge({ :value => field.form_value })
+      = localized_fields.text_area field.method_name, field.html_attributes.reverse_merge(:data => { :richtext => false, :options => {}.to_json }).reverse_merge({ :value => field.form_value })
