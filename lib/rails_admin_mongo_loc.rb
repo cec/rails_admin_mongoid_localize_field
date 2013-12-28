@@ -38,6 +38,15 @@ module RailsAdmin
 
         end
 
+        class CKEditorml < RailsAdmin::Config::Fields::Types::CKEditor
+          include ConfigureBasicType
+
+          register_instance_option :partial do
+            :form_ck_editorml
+          end
+
+        end
+
         class CodeMirrorml < RailsAdmin::Config::Fields::Types::CodeMirror
           include ConfigureBasicType
 
@@ -52,15 +61,6 @@ module RailsAdmin
 
           register_instance_option :partial do
             :form_wysihtml5ml
-          end
-
-        end
-
-        class CKEditorml < RailsAdmin::Config::Fields::Types::CKEditor
-          include ConfigureBasicType
-
-          register_instance_option :partial do
-            :form_ck_editorml
           end
 
         end
@@ -82,20 +82,20 @@ end
 RailsAdmin::Config::Fields.register_factory do |parent, properties, fields|
 
   case properties[:name]
-    when :ck_editorml
-      fields << RailsAdmin::Config::Fields::Types::CKEditorml.new(parent, properties[:name], properties)
-      true
     when :textml
       fields << RailsAdmin::Config::Fields::Types::Textml.new(parent, properties[:name], properties)
       true
-    when :stringml
-      fields << RailsAdmin::Config::Fields::Types::Stringml.new(parent, properties[:name], properties)
+    when :ck_editorml
+      fields << RailsAdmin::Config::Fields::Types::CKEditorml.new(parent, properties[:name], properties)
       true
     when :code_mirrorml
       fields << RailsAdmin::Config::Fields::Types::CodeMirrorml.new(parent, properties[:name], properties)
       true
     when :wysihtml5ml
       fields << RailsAdmin::Config::Fields::Types::Wysihtml5ml.new(parent, properties[:name], properties)
+      true
+    when :stringml
+      fields << RailsAdmin::Config::Fields::Types::Stringml.new(parent, properties[:name], properties)
       true
     else
       false

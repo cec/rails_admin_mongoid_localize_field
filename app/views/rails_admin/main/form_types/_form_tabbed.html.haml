@@ -2,7 +2,7 @@
   = form.localized_fields do |localized_field|
     %li{ class: ( 'active' if localized_field.language == I18n.locale ) }
       %a{ href: "##{localized_field.language}_#{field.method_name}", data: { toggle: "tab" } }= localized_field.language
-.tab-content{ :style => 'float:left' }
+.tab-content{ style: 'float:left' }
   = form.localized_fields do |localized_field|
-    .fields.tab-pane{ id: "#{localized_field.language}_#{field.method_name}", class: ( 'active' if localized_field.language == I18n.locale ) }
+    .fields.tab-pane{ style: 'padding:5px',id: "#{localized_field.language}_#{field.method_name}", class: ( 'active' if localized_field.language == I18n.locale ) }
       = localized_field.send field_type, field.method_name, html_attributes
