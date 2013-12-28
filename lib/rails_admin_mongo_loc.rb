@@ -1,75 +1,85 @@
 require "rails_admin_mongo_loc/engine"
 require 'active_support/concern'
+require 'rails_admin/config/fields'
+require 'rails_admin/config/fields/base'
+require 'rails_admin/config/fields/types/string'
+require 'rails_admin/config/fields/types/text'
+require 'rails_admin/config/fields/types/ck_editor'
+require 'rails_admin/config/fields/types/code_mirror'
+require 'rails_admin/config/fields/types/wysihtml5'
 
-module ConfigureBasicType
+module RegisterInstances
   extend ActiveSupport::Concern
 
   included do
     RailsAdmin::Config::Fields::Types::register(self)
 
-    register_instance_option :allowed_methods do
-      [method_name, name.to_s + '_translations']
+    register_instance_option :translations_field do
+      name.to_s + '_translations'
+    end
+
+    register_instance_option :localized? do
+      bindings[:object].respond_to?(translations_field)
     end
 
     register_instance_option :tabbed do
       true
     end
 
+    register_instance_option :allowed_methods do
+      localized? ? [method_name, translations_field] : [method_name]
+    end
+
   end
+
 end
-
-require 'rails_admin/config/fields'
-require 'rails_admin/config/fields/base'
-
-require 'rails_admin/config/fields/types/text'
-require 'rails_admin/config/fields/types/string'
 
 module RailsAdmin
   module Config
     module Fields
       module Types
 
-        class Textml < RailsAdmin::Config::Fields::Types::Text
-          include ConfigureBasicType
+        RailsAdmin::Config::Fields::Types::Text.class_eval do
+          include RegisterInstances
 
           register_instance_option :partial do
-            :form_textml
+            localized? ? :form_textml : :form_text
           end
 
         end
 
-        class CKEditorml < RailsAdmin::Config::Fields::Types::CKEditor
-          include ConfigureBasicType
+        RailsAdmin::Config::Fields::Types::CKEditor.class_eval do
+          include RegisterInstances
 
           register_instance_option :partial do
-            :form_ck_editorml
+            localized? ? :form_ck_editorml : :form_ck_editor
           end
 
         end
 
-        class CodeMirrorml < RailsAdmin::Config::Fields::Types::CodeMirror
-          include ConfigureBasicType
+        RailsAdmin::Config::Fields::Types::CodeMirror.class_eval do
+          include RegisterInstances
 
           register_instance_option :partial do
-            :form_code_mirrorml
+            localized? ? :form_code_mirrorml : :form_code_mirror
           end
 
         end
 
-        class Wysihtml5ml < RailsAdmin::Config::Fields::Types::Wysihtml5
-          include ConfigureBasicType
+        RailsAdmin::Config::Fields::Types::Wysihtml5.class_eval do
+          include RegisterInstances
 
           register_instance_option :partial do
-            :form_wysihtml5ml
+            localized? ? :form_wysihtml5ml : :form_wysihtml5
           end
 
         end
 
-        class Stringml < RailsAdmin::Config::Fields::Types::String
-          include ConfigureBasicType
+        RailsAdmin::Config::Fields::Types::String.class_eval do
+          include RegisterInstances
 
           register_instance_option :partial do
-            :form_fieldml
+            localized? ? :form_fieldml : :form_field
           end
 
         end
@@ -78,29 +88,3 @@ module RailsAdmin
     end
   end
 end
-
-RailsAdmin::Config::Fields.register_factory do |parent, properties, fields|
-
-  case properties[:name]
-    when :textml
-      fields << RailsAdmin::Config::Fields::Types::Textml.new(parent, properties[:name], properties)
-      true
-    when :ck_editorml
-      fields << RailsAdmin::Config::Fields::Types::CKEditorml.new(parent, properties[:name], properties)
-      true
-    when :code_mirrorml
-      fields << RailsAdmin::Config::Fields::Types::CodeMirrorml.new(parent, properties[:name], properties)
-      true
-    when :wysihtml5ml
-      fields << RailsAdmin::Config::Fields::Types::Wysihtml5ml.new(parent, properties[:name], properties)
-      true
-    when :stringml
-      fields << RailsAdmin::Config::Fields::Types::Stringml.new(parent, properties[:name], properties)
-      true
-    else
-      false
-  end
-
-end
-
-
