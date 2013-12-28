@@ -1,6 +1,17 @@
 require "rails_admin_mongo_loc/engine"
+require 'active_support/concern'
 
-module RailsAdminMongoLoc
+module RegisterType
+  extend ActiveSupport::Concern
+
+  included do
+    RailsAdmin::Config::Fields::Types::register(self)
+
+    register_instance_option :allowed_methods do
+      [method_name, name.to_s + '_translations']
+    end
+
+  end
 end
 
 require 'rails_admin/config/fields'
@@ -14,14 +25,8 @@ module RailsAdmin
     module Fields
       module Types
 
-
         class Textml < RailsAdmin::Config::Fields::Types::Text
-
-          RailsAdmin::Config::Fields::Types::register(self)
-
-          register_instance_option :allowed_methods do
-            [method_name, name.to_s + '_translations']
-          end
+          include RegisterType
 
           register_instance_option :partial do
             :form_textml
@@ -29,19 +34,21 @@ module RailsAdmin
 
         end
 
+        class CKEditorml < RailsAdmin::Config::Fields::Types::CKEditor
+          include RegisterType
+
+          register_instance_option :partial do
+            :form_textml
+          end
+
+        end
 
         class Stringml < RailsAdmin::Config::Fields::Types::String
-
-          RailsAdmin::Config::Fields::Types::register(self)
-
-          register_instance_option :allowed_methods do
-            [method_name, name.to_s + '_translations']
-          end
+          include RegisterType
 
           register_instance_option :partial do
             :form_fieldml
           end
-
         end
 
       end
