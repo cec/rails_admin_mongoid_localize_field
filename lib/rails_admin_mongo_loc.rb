@@ -34,6 +34,15 @@ module RailsAdmin
 
         end
 
+        class CodeMirrorml < RailsAdmin::Config::Fields::Types::CodeMirror
+          include RegisterType
+
+          register_instance_option :partial do
+            :form_code_mirrorml
+          end
+
+        end
+
         class CKEditorml < RailsAdmin::Config::Fields::Types::CKEditor
           include RegisterType
 
@@ -60,7 +69,7 @@ end
 RailsAdmin::Config::Fields.register_factory do |parent, properties, fields|
 
   case properties[:name]
-    when :ckeditorml
+    when :ck_editorml
       fields << RailsAdmin::Config::Fields::Types::CKEditorml.new(parent, properties[:name], properties)
       true
     when :textml
@@ -68,6 +77,9 @@ RailsAdmin::Config::Fields.register_factory do |parent, properties, fields|
       true
     when :stringml
       fields << RailsAdmin::Config::Fields::Types::Stringml.new(parent, properties[:name], properties)
+      true
+    when :code_mirrorml
+      fields << RailsAdmin::Config::Fields::Types::CodeMirrorml.new(parent, properties[:name], properties)
       true
     else
       false
