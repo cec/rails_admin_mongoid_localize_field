@@ -25,7 +25,7 @@ class Category
 end
 ```
 
-If you didn't like ui tabs, you can remove them and use simple form template using `tabbed` option: 
+If you didn't like ui tabs, you can remove them and use simple form template by using `tabbed` option: 
 
 ```ruby
 # config/initializer/rails_admin.rb
