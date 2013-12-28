@@ -17,7 +17,7 @@ Run:
 
 Just by telling the field to `localize`:
 ```ruby
-class YourModel
+class Category
   include Mongoid::Document
 
   field :name, type: String, localize: true
