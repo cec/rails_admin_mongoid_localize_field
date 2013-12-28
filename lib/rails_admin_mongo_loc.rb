@@ -67,7 +67,7 @@ RailsAdmin::Config::Fields.register_factory do |parent, properties, fields|
       fields << RailsAdmin::Config::Fields::Types::Textml.new(parent, properties[:name], properties)
       true
     when :stringml
-      ields << RailsAdmin::Config::Fields::Types::Stringml.new(parent, properties[:name], properties)
+      fields << RailsAdmin::Config::Fields::Types::Stringml.new(parent, properties[:name], properties)
       true
     else
       false
