@@ -15,6 +15,7 @@ Run:
 ## Usage
 
 Just by telling the field to `localize`:
+
 ```ruby
 class Category
   include Mongoid::Document
@@ -25,6 +26,7 @@ end
 ```
 
 If you didn't like ui tabs, you can remove them and use simple form template using `tabbed` option: 
+
 ```ruby
 # config/initializer/rails_admin.rb
 
@@ -42,7 +44,7 @@ end
 
 ## Screenshot
 
-![Screenshot](https://s3-us-west-2.amazonaws.com/droplr.storage/files/acc_176152/yd3e?AWSAccessKeyId=AKIAJSVQN3Z4K7MT5U2A&Expires=1388262962&Signature=Q5fdU5Bn8Q9dMa%2BOGiLtjQwctp0%3D&response-content-disposition=inline%3B%20filename%3Drails_admin_mongoid_localize_fields.png%3B%20filename%2A%3DUTF-8%2527%2527rails_admin_mongoid_localize_fields.png)
+![Screenshot](https://raw.github.com/sudosu/screenshots/master/rails_admin_mongoid_localize_fields.png)
 
 
 ## Dependencies
