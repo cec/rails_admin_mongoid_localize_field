@@ -51,7 +51,7 @@ end
 
 * haml
 * mongoid >= 3.0
-* rails >= 4.0
+* rails >= 3.0
 * rails_admin >= 0.5
 
 This project rocks and uses MIT-LICENSE.
