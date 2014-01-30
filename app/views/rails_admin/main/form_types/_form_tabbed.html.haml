@@ -1,9 +1,10 @@
 %ul.nav.nav-tabs
+  - uuid = "#{field.name}_for_new_#{field.abstract_model.table_name}_#{SecureRandom.hex(10)}"
   - I18n.available_locales.each do |locale|
     %li{ class: ( 'active' if locale == I18n.locale ) }
-      %a{ href: "##{field.method_name}_#{locale}", data: { toggle: "tab" } }= locale
+      %a{ href: "##{locale}_#{uuid}", data: { toggle: "tab" } }= locale
 .tab-content{ style: 'float:left' }
   = form.fields_for field.translations_field do |localized_field|
     - I18n.available_locales.each do |locale|
-      .fields.tab-pane{ style: 'padding:5px',id: "#{field.method_name}_#{locale}", class: ( 'active' if locale == I18n.locale ) }
+      .fields.tab-pane{ style: 'padding:5px', id: "#{locale}_#{uuid}", class: ( 'active' if locale == I18n.locale ) }
         = localized_field.send field_type, locale, html_attributes.reverse_merge({ :value => field.value.try(:[], locale.to_s) })
