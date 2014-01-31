@@ -14,11 +14,11 @@ module RegisterInstances
   included do
 
     register_instance_option :translations_field do
-      name.to_s + '_translations'
+      (name.to_s + '_translations').to_sym
     end
 
     register_instance_option :localized? do
-      bindings[:object].respond_to?(translations_field)
+      @abstract_model.model_name.constantize.public_instance_methods.include?(translations_field)
     end
 
     register_instance_option :tabbed do
