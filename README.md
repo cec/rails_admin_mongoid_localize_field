@@ -6,7 +6,7 @@ Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for [mongoid
 
 In your `Gemfile`add the following dependencies:
 
-    gem "rails_admin_mongoid_localize_filed", "~> 0.1.0"
+    gem "rails_admin_mongoid_localize_field", "~> 0.1.2"
 
 Run:
 
