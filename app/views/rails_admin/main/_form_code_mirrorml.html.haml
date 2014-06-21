@@ -13,9 +13,9 @@
 
   if field.html_attributes[:cols]
     if field.html_attributes[:cols].to_s.match('%')
-      editor_size[:heigth] = field.html_attributes[:cols]
+      editor_size[:width] = field.html_attributes[:cols]
     else
-      editor_size[:heigth] = "#{field.html_attributes[:cols].to_i * 8}px"
+      editor_size[:width] = "#{field.html_attributes[:cols].to_i * 8}px"
     end
   end
 
