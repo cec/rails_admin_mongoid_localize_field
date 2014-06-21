@@ -3,7 +3,7 @@
   - I18n.available_locales.each do |locale|
     %li{ class: ( 'active' if locale == I18n.locale ) }
       %a{ href: "##{locale}_#{uuid}", data: { toggle: "tab" } }= locale
-.tab-content{ style: 'float:left' }
+.tab-content
   = form.fields_for field.translations_field do |localized_field|
     - I18n.available_locales.each do |locale|
       .fields.tab-pane{ style: 'padding:5px; margin: 0;', id: "#{locale}_#{uuid}", class: ( 'active' if locale == I18n.locale ) }
