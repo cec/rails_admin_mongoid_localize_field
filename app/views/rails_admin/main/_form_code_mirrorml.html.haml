@@ -37,7 +37,7 @@
 
 :javascript
   $(document).on('click', '##{uniqid} .nav.nav-tabs li a', function(e){
-      $('#static_page_html_field .tab-content '+ $(this).attr('href') + ' .CodeMirror').each(function(i, el){
+      $('##{uniqid} .tab-content '+ $(this).attr('href') + ' .CodeMirror').each(function(i, el){
           el.CodeMirror.refresh();
       });
   });
