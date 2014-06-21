@@ -25,10 +25,6 @@ module RegisterInstances
       true
     end
     
-    register_instance_option :wrapper_style do      
-    
-    end
-
     register_instance_option :allowed_methods do
       localized? ? [method_name, translations_field] : [method_name]
     end
