@@ -24,11 +24,14 @@ module RegisterInstances
     register_instance_option :tabbed do
       true
     end
-    
+
     register_instance_option :allowed_methods do
       localized? ? [method_name, translations_field] : [method_name]
     end
 
+    register_instance_option :localized_value do
+      bindings[:object].safe_send(translations_field)
+    end
   end
 
 end
