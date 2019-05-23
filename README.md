@@ -6,7 +6,7 @@ Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for [mongoid
 
 In your `Gemfile`add the following dependencies:
 
-    gem "rails_admin_mongoid_localize_field", "~> 0.1.2"
+    gem "rails_admin_mongoid_localize_field", github: "webmil/rails_admin_mongoid_localize_field"
 
 Run:
 
@@ -20,12 +20,12 @@ Just by telling the field to `localize`:
 class Category
   include Mongoid::Document
 
-  field :name, type: String, localize: true
+  field :name,        type: String, localize: true
   field :description, type: String, localize: true
 end
 ```
 
-If you didn't like ui tabs, you can remove them and use simple form template by using `tabbed` option: 
+If you didn't like ui tabs, you can remove them and use simple form template by using `tabbed` option:
 
 ```ruby
 # config/initializer/rails_admin.rb
