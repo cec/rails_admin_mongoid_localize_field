@@ -32,28 +32,8 @@ module RegisterInstances
     register_instance_option :localized_value do
       bindings[:object].safe_send(translations_field)
     end
-
-    register_instance_option :pretty_value do
-      ret = nil
-      if localized?
-        ret = []
-        values = localized_value
-        unless values.is_a?(Hash)
-          _value = {}
-          _value[I18n.locale] = values
-          values = _value
-        end
-
-        values.each_pair do |loc, val|
-          ret << "#{loc}: #{val}"
-        end
-        ret = ret.join('<br />').html_safe
-      else
-        ret ||= value
-      end
-      ret
-    end
   end
+
 end
 
 module RailsAdmin
