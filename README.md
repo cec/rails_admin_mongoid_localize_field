@@ -2,11 +2,13 @@
 
 Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for [mongoid localized fields](http://mongoid.org/en/mongoid/docs/documents.html#localized_fields).
 
+**DO NOT OPEN ISSUES ON THIS FORK AS I CAN'T GUARANTEE ANY SUPPORT**
+
 ## Installation
 
 In your `Gemfile`add the following dependencies:
 
-    gem "rails_admin_mongoid_localize_field", github: "webmil/rails_admin_mongoid_localize_field"
+    gem "rails_admin_mongoid_localize_field", github: "cec/rails_admin_mongoid_localize_field"
 
 Run:
 
